@@ -10,7 +10,6 @@ ctk.set_default_color_theme("blue")
 
 
 class MasaDataConverter(ctk.CTk):
-    # Base reference: 1 Bit Per Second (bps)
     UNIT_MAP = {
         "Bit/s (bps)": 1.0,
         "Kilobit/s (Kbps)": 1e3,
@@ -23,7 +22,7 @@ class MasaDataConverter(ctk.CTk):
         "Gibibit/s (Gibps)": 1073741824.0,
         "Gigabyte/s (GB/s)": 8e9,
         "Terabit/s (Tbps)": 1e12,
-        "Terabyte/s (TB/s)": 8e12
+        "Terabyte/s (TB/s)": 8e12,
     }
 
     def __init__(self):
@@ -49,7 +48,7 @@ class MasaDataConverter(ctk.CTk):
             header,
             text="MASA DATAMORPH MATRIX",
             font=ctk.CTkFont(family="Segoe UI", size=18, weight="bold"),
-            text_color="#38BDF8"
+            text_color="#38BDF8",
         )
         title.pack(pady=(12, 2))
 
@@ -57,14 +56,19 @@ class MasaDataConverter(ctk.CTk):
             header,
             text="Universal Bandwidth & Data Transfer Rate Converter",
             font=ctk.CTkFont(size=11),
-            text_color="#94A3B8"
+            text_color="#94A3B8",
         )
         subtitle.pack(pady=(0, 12))
 
         calc_card = ctk.CTkFrame(self, fg_color="#121826", corner_radius=16)
         calc_card.pack(fill="x", padx=20, pady=5)
 
-        lbl_val = ctk.CTkLabel(calc_card, text="TRANSFER QUANTITY", font=ctk.CTkFont(size=11, weight="bold"), text_color="#94A3B8")
+        lbl_val = ctk.CTkLabel(
+            calc_card,
+            text="TRANSFER QUANTITY",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color="#94A3B8",
+        )
         lbl_val.pack(anchor="w", padx=16, pady=(15, 2))
 
         self.entry_val = ctk.CTkEntry(
@@ -72,7 +76,7 @@ class MasaDataConverter(ctk.CTk):
             placeholder_text="100.0",
             font=ctk.CTkFont(family="Consolas", size=16),
             height=40,
-            corner_radius=10
+            corner_radius=10,
         )
         self.entry_val.pack(fill="x", padx=16, pady=(0, 12))
         self.entry_val.insert(0, "100")
@@ -82,7 +86,9 @@ class MasaDataConverter(ctk.CTk):
         units_grid.pack(fill="x", padx=16, pady=(0, 15))
         units_grid.grid_columnconfigure((0, 1), weight=1)
 
-        lbl_f = ctk.CTkLabel(units_grid, text="FROM UNIT", font=ctk.CTkFont(size=11, weight="bold"), text_color="#94A3B8")
+        lbl_f = ctk.CTkLabel(
+            units_grid, text="FROM UNIT", font=ctk.CTkFont(size=11, weight="bold"), text_color="#94A3B8"
+        )
         lbl_f.grid(row=0, column=0, sticky="w", pady=(0, 2))
 
         self.menu_f = ctk.CTkOptionMenu(
@@ -92,11 +98,13 @@ class MasaDataConverter(ctk.CTk):
             command=lambda _: self._calculate(),
             fg_color="#0284C7",
             button_color="#0369A1",
-            corner_radius=8
+            corner_radius=8,
         )
         self.menu_f.grid(row=1, column=0, sticky="ew", padx=(0, 6))
 
-        lbl_t = ctk.CTkLabel(units_grid, text="TO UNIT", font=ctk.CTkFont(size=11, weight="bold"), text_color="#94A3B8")
+        lbl_t = ctk.CTkLabel(
+            units_grid, text="TO UNIT", font=ctk.CTkFont(size=11, weight="bold"), text_color="#94A3B8"
+        )
         lbl_t.grid(row=0, column=1, sticky="w", pady=(0, 2))
 
         self.menu_t = ctk.CTkOptionMenu(
@@ -106,7 +114,7 @@ class MasaDataConverter(ctk.CTk):
             command=lambda _: self._calculate(),
             fg_color="#0284C7",
             button_color="#0369A1",
-            corner_radius=8
+            corner_radius=8,
         )
         self.menu_t.grid(row=1, column=1, sticky="ew", padx=(6, 0))
 
@@ -117,15 +125,12 @@ class MasaDataConverter(ctk.CTk):
             display_card,
             text="800.0",
             font=ctk.CTkFont(family="Consolas", size=38, weight="bold"),
-            text_color="#38BDF8"
+            text_color="#38BDF8",
         )
         self.lbl_res.pack(pady=(25, 4))
 
         self.lbl_formula = ctk.CTkLabel(
-            display_card,
-            text="",
-            font=ctk.CTkFont(size=12),
-            text_color="#94A3B8"
+            display_card, text="", font=ctk.CTkFont(size=12), text_color="#94A3B8"
         )
         self.lbl_formula.pack(pady=(0, 20))
 
@@ -136,7 +141,7 @@ class MasaDataConverter(ctk.CTk):
             fg_color="#1E293B",
             hover_color="#334155",
             corner_radius=8,
-            command=self._swap
+            command=self._swap,
         )
         btn_swap.pack(side="bottom", pady=15)
 
